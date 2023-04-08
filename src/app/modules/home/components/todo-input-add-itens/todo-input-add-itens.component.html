@@ -1,0 +1,8 @@
+<input type="text" placeholder="Digite a sua nova Task aqui..."
+[(ngModel)]="addItemTaskList"
+(keyup.enter)="SubmitItemTaskList()">
+
+<!--
+1º - ngModel vai levar até a variável o valor digitado pelo usuário. A variável addItemTaskList é quem vai ser utilizada pelo submit;
+2º - quando o usuário denter um ENTER, o keyup.enter será acionado e como ele tem o método SubmitItemTaskList vai pegar o valor digitado e enviar até o método de adicionar;
+-->

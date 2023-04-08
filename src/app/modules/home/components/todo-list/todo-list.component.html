@@ -1,0 +1,20 @@
+<section [ngClass]="{'loading': !taskList.length}"> <!--Se tiver tasks criadas, pode mostrar quais são, caso não tenha nenhuma task criada, mostrar a imagem-->
+
+  <ul *ngIf="taskList.length">
+    <li *ngFor="let item of taskList; let i = index">
+      <input type="checkbox" [(ngModel)] = "item.checked">
+      <input type="text" [(ngModel)] = "item.task" [ngClass]="{'checked': item.checked }" (keyup)="validationInput(item.task, i)">
+
+      <button (click)="deleteItemTaslList(i)">
+        <img src="assets/icons/icon-trash.svg" alt="">
+      </button>
+
+     <!-- {{ item | json}} -->
+
+    </li>
+  </ul>
+
+</section>
+
+<app-todo-input-add-itens (emitItemTaskList)="setEmitTaskList($event)" ></app-todo-input-add-itens>
+<app-todo-button-delete-all *ngIf="taskList.length" (click)="deleteAllTaskList()"></app-todo-button-delete-all> <!--Se não tiver nenhuma task na lista, não é necessário mostrar o botão-->
